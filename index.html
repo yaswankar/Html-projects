@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>RRD HTML Assessment</title>
+	<link rel="stylesheet" type="text/css" href="./assets/fonts/varta.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		
+		body
+		{
+			background-image: url(./assets/images/bg-cover.png);
+			background-size: cover;
+			height: 100%;
+			width: 100%;
+			
+		}
+
+		.container
+		{
+			max-height: 720px;
+			margin-left: 20px;
+		}
+
+		h5
+		{
+			color: #a2a1a2;
+			font-family: 'Varta', sans-serif;
+			font-weight: bold;
+			font-size: 15px;
+			padding-left: 15px;
+			padding-top: 15px;
+		}
+		#border
+		{
+			height: 35px;
+            padding-left: 20px;
+		}
+
+		p
+		{
+			color: rgba(0, 0, 0, 0.5);
+			font-family: 'Varta', sans-serif;
+			font-weight: bold;
+		}
+		.column
+		{
+			width: 60%;
+		}
+		img
+		{
+			width: 60%;
+		}
+		h6
+		{
+			font-family: 'Varta', sans-serif;
+		}
+		.row1
+		{
+			height: 500px;
+			padding-top: 63px;
+			max-width: 1152px;
+			margin: auto;
+			position: relative;
+		}
+		.columns
+		{
+			width: 245px;
+			text-align: center;
+			float: left;
+			margin: 0 60px 0 60px;
+		} 
+		.columns .custom {
+			color: rgba(0, 0, 0, 0.9);
+			font-size: 12px;
+		}
+		.columns .normal {
+			font-size: 12px;
+		}
+		.fa-angle-right {
+			position: absolute;
+			right: 0;
+			margin-top: 127px;
+			font-size: 30px;
+		}
+		.fa-angle-left {
+			position: absolute;
+			left: 0;
+			margin-top: 127px;
+			font-size: 30px;
+		}
+		.disabled {
+			color: lightgray;
+			pointer-events: none;
+		}
+		.slide
+		{
+			border-bottom: 10px solid #316bae;
+			border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			height: 0;
+			width: 20px;
+		}
+	</style>
+
+
+</head>
+<body>
+
+<h5 id="border">WHEELS</h5>
+
+<div class="container">
+
+	<div class="row">
+		<div class="column">
+			<p style="font-style: italic;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+		</div>
+	</div>
+
+	<div class="row1">
+		<span class="fa fa-angle-left" onclick="slideLeft()"></span>
+		<span class="fa fa-angle-right" onclick="slideRight()"></span>
+	</div>
+</div>
+<script type="text/javascript">
+	var cardCollection = [{src: './assets/images/wgu.png', title: '17-INCH CAST ALUMINIUM WHEEL, FULLY PAINTED SILVER LITHO', description: 'Standard on Touring FWD', meta: '(WGU)'}, 
+	{src: './assets/images/wjr.png', title: '17-INCH CAST ALUMINIUM DIAMOND-CUT WHEEL WITH BALTIC GRAY POCKETS', description: 'Standard on Touring LFWD/Hybrid and Touring Hybrid', meta: '(WJR)'}, 
+	{src: './assets/images/wp6.png', title: '18-INCH CAST ALUMINIUM WHEEL WITH FORESHADOW FINISH', description: 'Included with 5 Appearance Package on Touring Hybrid, Touring L Hybrid and Limited Hybrid', meta: '(WP6)'},
+	{src: './assets/images/wgu.png', title: '17-INCH CAST ALUMINIUM WHEEL, FULLY PAINTED SILVER LITHO', description: 'Standard on Touring FWD', meta: '(WGU)'}, 
+	{src: './assets/images/wjr.png', title: '17-INCH CAST ALUMINIUM DIAMOND-CUT WHEEL WITH BALTIC GRAY POCKETS', description: 'Standard on Touring LFWD/Hybrid and Touring Hybrid', meta: '(WJR)'}, 
+	{src: './assets/images/wp6.png', title: '18-INCH CAST ALUMINIUM WHEEL WITH FORESHADOW FINISH', description: 'Included with 5 Appearance Package on Touring Hybrid, Touring L Hybrid and Limited Hybrid', meta: '(WP6)'},
+	{src: './assets/images/wgu.png', title: '17-INCH CAST ALUMINIUM WHEEL, FULLY PAINTED SILVER LITHO', description: 'Standard on Touring FWD', meta: '(WGU)'}, 
+	{src: './assets/images/wjr.png', title: '17-INCH CAST ALUMINIUM DIAMOND-CUT WHEEL WITH BALTIC GRAY POCKETS', description: 'Standard on Touring LFWD/Hybrid and Touring Hybrid', meta: '(WJR)'}, 
+	{src: './assets/images/wp6.png', title: '18-INCH CAST ALUMINIUM WHEEL WITH FORESHADOW FINISH', description: 'Included with 5 Appearance Package on Touring Hybrid, Touring L Hybrid and Limited Hybrid', meta: '(WP6)'}];
+	var start=0, end=2; // Initializing start and end indexes
+	if(start == 0) document.querySelector('.fa-angle-left').classList.add('disabled');
+	else document.querySelector('.fa-angle-left').classList.remove('disabled');
+
+	if(end == cardCollection.length) document.querySelector('.fa-angle-right').classList.add('disabled');
+	else document.querySelector('.fa-angle-right').classList.remove('disabled');
+
+	var row1Element = document.getElementsByClassName('row1')[0];
+	for(var itr=start; itr<=end; itr++) {
+		//Creating Sub-div
+		var divElement = document.createElement('div');
+		divElement.className = `columns ${itr}`;
+
+		//Creating sub-elements
+		var imageTag = document.createElement('img')
+		imageTag.src = cardCollection[itr].src;
+		var par1 = document.createElement('p');
+		par1.className = 'custom'
+		par1.innerHTML = cardCollection[itr].title;
+		var par2 = document.createElement('p');
+		par2.className = 'normal'
+		par2.innerHTML = cardCollection[itr].description;
+		var par3 = document.createElement('p');
+		par3.className = 'custom'
+		par3.innerHTML = cardCollection[itr].meta;
+		
+		// Inserting sub-elements into the div
+		divElement.appendChild(imageTag);
+		divElement.appendChild(par1);
+		divElement.appendChild(par2);
+		divElement.appendChild(par3);
+
+		//Inserting the sub-div inside row1
+		row1Element.appendChild(divElement);
+
+		// Binding Event Listener for div with className="columns" [gets triggered on clicking the div]
+		divElement.addEventListener('click', (e) => {
+			if(!e.target.classList.contains('columns')) { // To check if we have clicked on only the items inside columns div  [to avoid double scaling]
+				var targetIndex = e.target.parentNode.className.split(' ')[1]
+				e.target.parentNode.style.transform="scale(1.3)";
+				e.target.parentNode.style.border = "2px solid #d3d3d1";
+				e.target.parentNode.style['background-image']="url(./assets/images/wheel-bg.jpg)"
+				
+				var columnsColl = document.querySelectorAll('.columns');
+
+				// To remove scaling for items other than the clicked one
+				for(var ind=0; ind<columnsColl.length; ind++) {
+					if(targetIndex != columnsColl[ind].className.split(' ')[1]) {
+						columnsColl[ind].style.transform = "none";
+						columnsColl[ind].style.border = "none";
+						columnsColl[ind].style['background-image']="none";
+					}
+				}
+			}
+		});
+	}
+	function slideLeft() {
+		var columnsColl = document.querySelectorAll('.columns');
+		for(var ind=0; ind<columnsColl.length; ind++) {
+				columnsColl[ind].style.transform = "none";
+		}
+		start = start-1;
+		end = end-1;
+        if(start == 0) document.querySelector('.fa-angle-left').classList.add('disabled');
+		else document.querySelector('.fa-angle-left').classList.remove('disabled');
+
+		if(end == cardCollection.length) document.querySelector('.fa-angle-right').classList.add('disabled')
+		else document.querySelector('.fa-angle-right').classList.remove('disabled');
+
+		// Deleting the existing columns div inside row1 div
+		for(var columnEle of document.querySelectorAll('.columns')) columnEle.remove();
+
+		for(var itr=start; itr<=end; itr++) {
+
+			//Creating Sub-div
+			var divElement = document.createElement('div');
+			divElement.className = `columns ${itr}`;;
+
+			//Creating sub-elements
+			var imageTag = document.createElement('img')
+			imageTag.src = cardCollection[itr].src;
+			var par1 = document.createElement('p');
+			par1.className = 'custom'
+			par1.innerHTML = cardCollection[itr].title;
+			var par2 = document.createElement('p');
+			par2.className = 'normal'
+			par2.innerHTML = cardCollection[itr].description;
+			var par3 = document.createElement('p');
+			par3.className = 'custom'
+			par3.innerHTML = cardCollection[itr].meta;
+
+			// Inserting sub-elements into the div
+			divElement.appendChild(imageTag);
+			divElement.appendChild(par1);
+			divElement.appendChild(par2);
+			divElement.appendChild(par3);
+
+			//Inserting the sub-div inside row1
+			row1Element.appendChild(divElement);
+
+			// Binding Event Listener for div with className="columns" [gets triggered on clicking the div]
+			divElement.addEventListener('click', e=> {
+				if(!e.target.classList.contains('columns')) {
+					var targetIndex = e.target.parentNode.className.split(' ')[1]
+					e.target.parentNode.style.transform="scale(1.3)";
+					e.target.parentNode.style.border = "2px solid #d3d3d1";
+					e.target.parentNode.style['background-image']="url(./assets/images/wheel-bg.jpg)"
+					
+					var columnsColl = document.querySelectorAll('.columns');
+					// To remove scaling for items other than the clicked one
+					for(var ind=0; ind<columnsColl.length; ind++) {
+						if(targetIndex != columnsColl[ind].className.split(' ')[1]) {
+							columnsColl[ind].style.transform = "none";
+							columnsColl[ind].style.border = "none";
+							columnsColl[ind].style['background-image']="none";
+						}
+					}
+				}
+			})
+		}
+	}
+	function slideRight() {
+		var columnsColl = document.querySelectorAll('.columns');
+		for(var ind=0; ind<columnsColl.length; ind++) {
+				columnsColl[ind].style.transform = "none";
+		}
+		start = start+1;
+		end = end+1;
+		
+		if(start == 0) document.querySelector('.fa-angle-left').classList.add('disabled');
+		else document.querySelector('.fa-angle-left').classList.remove('disabled');
+
+		if(end == cardCollection.length) document.querySelector('.fa-angle-right').classList.add('disabled');
+		else document.querySelector('.fa-angle-right').classList.remove('disabled');
+		// Deleting the existing columns div inside row1 div
+		for(var columnEle of document.querySelectorAll('.columns')) columnEle.remove();
+
+		for(var itr=start; itr<=end; itr++) {
+
+			// Creating Sub-div
+			var divElement = document.createElement('div'); 
+			divElement.className = `columns ${itr}`;
+            
+			// Creating sub-elements
+			var imageTag = document.createElement('img')
+			imageTag.src = cardCollection[itr].src;
+			var par1 = document.createElement('p');
+			par1.className = 'custom'
+			par1.innerHTML = cardCollection[itr].title;
+			var par2 = document.createElement('p');
+			par2.className = 'normal'
+			par2.innerHTML = cardCollection[itr].description;
+			var par3 = document.createElement('p');
+			par3.className = 'custom'
+			par3.innerHTML = cardCollection[itr].meta;
+
+			// Inserting sub-elements into the div
+			divElement.appendChild(imageTag);
+			divElement.appendChild(par1);
+			divElement.appendChild(par2);
+			divElement.appendChild(par3);
+
+			//Inserting the sub-div inside row1
+			row1Element.appendChild(divElement);
+
+			// Binding Event Listener for div with className="columns" [gets triggered on clicking the div]
+			divElement.addEventListener('click', e=> {
+				if(!e.target.classList.contains('columns')) {
+					var targetIndex = e.target.parentNode.className.split(' ')[1]
+					e.target.parentNode.style.transform="scale(1.3)";
+					e.target.parentNode.style.border = "2px solid #d3d3d1";
+					e.target.parentNode.style['background-image']="url(./assets/images/wheel-bg.jpg)"
+					
+					var columnsColl = document.querySelectorAll('.columns');
+					// To remove scaling for items other than the clicked one
+					for(var ind=0; ind<columnsColl.length; ind++) {
+						if(targetIndex != columnsColl[ind].className.split(' ')[1]) {
+							columnsColl[ind].style.transform = "none";
+							columnsColl[ind].style.border = "none";
+							columnsColl[ind].style['background-image']="none";
+						}
+					}
+				}
+			})
+		}
+	}
+</script>
+</body>
+</html>
